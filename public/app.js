@@ -1,5 +1,5 @@
 const $ = (id) => document.getElementById(id);
-const state = { asks: [], bids: [], rows: 12, view: 'both', lastMid: 0, reconnects: 0 };
+const state = { asks: [], bids: [], marketAsks: [], marketBids: [], rows: 12, view: 'both', lastMid: 0, reconnects: 0 };
 
 function num(value, digits = 4) {
   const n = Number(value);
@@ -29,6 +29,9 @@ function render() {
   const bestBid = Number(bids[0][0]);
   const mid = (bestAsk + bestBid) / 2;
   const spread = bestAsk - bestBid;
+  const marketBestAsk = Number(state.marketAsks?.[0]?.[0]);
+  const marketBestBid = Number(state.marketBids?.[0]?.[0]);
+  const marketMid = Number.isFinite(marketBestAsk + marketBestBid) ? (marketBestAsk + marketBestBid) / 2 : mid;
   const bidVolume = bids.reduce((sum, [, q]) => sum + Number(q), 0);
   const askVolume = asks.reduce((sum, [, q]) => sum + Number(q), 0);
   const totalVolume = bidVolume + askVolume || 1;
@@ -39,9 +42,9 @@ function render() {
   $('asks').style.display = state.view === 'bids' ? 'none' : 'block';
   $('bids').style.display = state.view === 'asks' ? 'none' : 'block';
   $('midPrice').textContent = num(mid, 2);
-  $('lastPrice').textContent = `${num(mid, 2)} USDT`;
-  $('spread').textContent = num(spread, 2);
-  $('spreadPct').textContent = `${(spread / mid * 100).toFixed(3)}%`;
+  $('lastPrice').textContent = `${num(marketMid, 2)} USDT`;
+  $('llBuy').textContent = `${num(bestBid, 2)} USDT`;
+  $('llSell').textContent = `${num(bestAsk, 2)} USDT`;
   $('visibleDepth').textContent = `${asks.length + bids.length} levels`;
   $('bestBid').textContent = num(bestBid, 2);
   $('bestAsk').textContent = num(bestAsk, 2);
@@ -76,6 +79,8 @@ function connect() {
     if (message.type === 'book') {
       state.asks = message.asks;
       state.bids = message.bids;
+      state.marketAsks = message.marketAsks || [];
+      state.marketBids = message.marketBids || [];
       $('updated').textContent = `Updated ${new Date(message.timestamp).toLocaleTimeString()}`;
       render();
     }

@@ -28,13 +28,13 @@
     <section class="market-head">
       <div class="coin-pair">
         <span class="coin">Z</span>
-        <div><h1>ZEC <span>/ USDT</span></h1><p>Zcash · Spot market</p></div>
+        <div><h1>ZEC <span>/ USDT</span></h1><p>Zcash · Lovely Legends Spot</p></div>
         <button class="star" aria-label="Add ZEC to favorites">☆</button>
       </div>
       <div class="ticker">
         <div><span>Last price</span><strong id="lastPrice">—</strong></div>
-        <div><span>Spread</span><strong id="spread">—</strong></div>
-        <div><span>Spread %</span><strong id="spreadPct">—</strong></div>
+        <div><span>LL buy price</span><strong class="green" id="llBuy">—</strong></div>
+        <div><span>LL sell price</span><strong class="red" id="llSell">—</strong></div>
         <div><span>Visible depth</span><strong id="visibleDepth">—</strong></div>
       </div>
     </section>
@@ -42,7 +42,7 @@
     <section class="layout">
       <article class="panel book-panel">
         <div class="panel-head">
-          <div><p class="eyebrow">Live market</p><h2>Order book</h2></div>
+          <div><p class="eyebrow">1.5% Lovely Legends pricing</p><h2>Order book</h2></div>
           <div class="status" id="status"><i></i><span>Connecting</span></div>
         </div>
         <div class="controls">
@@ -60,7 +60,7 @@
           <small>Mid-market price</small>
         </div>
         <div class="orders bids" id="bids" aria-label="Buy orders"></div>
-        <div class="book-foot"><span>Source: MEXC Spot</span><span id="updated">Waiting for data…</span></div>
+        <div class="book-foot"><span>MEXC market ± 1.5% LL spread</span><span id="updated">Waiting for data…</span></div>
       </article>
 
       <aside class="panel info-panel">
@@ -76,7 +76,7 @@
           <div><span>Bid volume</span><strong id="bidVolume">—</strong></div>
           <div><span>Ask volume</span><strong id="askVolume">—</strong></div>
         </div>
-        <div class="notice"><span>◆</span><p><b>Real-time feed</b><br>Prices and quantities come directly from the MEXC ZEC/USDT Spot order book.</p></div>
+        <div class="notice"><span>◆</span><p><b>Lovely Legends pricing</b><br>Bids are 1.5% below MEXC; asks are 1.5% above MEXC. Customer trades can be hedged at MEXC market price.</p></div>
       </aside>
     </section>
   </main>
