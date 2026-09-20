@@ -1,0 +1,18 @@
+{
+  "name": "lovely-legends-zec-orderbook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Live ZEC/USDT spot order book powered by MEXC market data",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "protobufjs": "^7.4.0",
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07110e">
+  <title>ZEC / USDT Order Book · Lovely Legends</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Lovely Legends home">
+      <span class="brand-mark">LL</span>
+      <span>Lovely <b>Legends</b></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#">Markets</a><a class="active" href="#">Trade</a><a href="#">Wallet</a>
+    </nav>
+    <div class="top-actions"><button class="ghost">Deposit</button><button class="avatar">JV</button></div>
+  </header>
+
+  <main>
+    <section class="market-head">
+      <div class="coin-pair">
+        <span class="coin">Z</span>
+        <div><h1>ZEC <span>/ USDT</span></h1><p>Zcash · Spot market</p></div>
+        <button class="star" aria-label="Add ZEC to favorites">☆</button>
+      </div>
+      <div class="ticker">
+        <div><span>Last price</span><strong id="lastPrice">—</strong></div>
+        <div><span>Spread</span><strong id="spread">—</strong></div>
+        <div><span>Spread %</span><strong id="spreadPct">—</strong></div>
+        <div><span>Visible depth</span><strong id="visibleDepth">—</strong></div>
+      </div>
+    </section>
+
+    <section class="layout">
+      <article class="panel book-panel">
+        <div class="panel-head">
+          <div><p class="eyebrow">Live market</p><h2>Order book</h2></div>
+          <div class="status" id="status"><i></i><span>Connecting</span></div>
+        </div>
+        <div class="controls">
+          <div class="view-tabs" role="group" aria-label="Order book view">
+            <button class="view active" data-view="both" title="Show asks and bids"><span class="both-icon"></span></button>
+            <button class="view" data-view="bids" title="Show bids"><span class="bid-icon"></span></button>
+            <button class="view" data-view="asks" title="Show asks"><span class="ask-icon"></span></button>
+          </div>
+          <label>Rows <select id="rowCount"><option>8</option><option selected>12</option><option>20</option></select></label>
+        </div>
+        <div class="columns"><span>Price (USDT)</span><span>Amount (ZEC)</span><span>Total (USDT)</span></div>
+        <div class="orders asks" id="asks" aria-label="Sell orders"></div>
+        <div class="mid-price">
+          <div><strong id="midPrice">—</strong><span id="priceArrow">↔</span></div>
+          <small>Mid-market price</small>
+        </div>
+        <div class="orders bids" id="bids" aria-label="Buy orders"></div>
+        <div class="book-foot"><span>Source: MEXC Spot</span><span id="updated">Waiting for data…</span></div>
+      </article>
+
+      <aside class="panel info-panel">
+        <div class="panel-head"><div><p class="eyebrow">Market summary</p><h2>ZEC / USDT</h2></div><span class="spot-pill">SPOT</span></div>
+        <div class="depth-card">
+          <div class="depth-label"><span>Buy depth</span><span>Sell depth</span></div>
+          <div class="depth-meter"><i id="buyMeter"></i><b id="sellMeter"></b></div>
+          <div class="depth-values"><strong id="buyPct">50.0%</strong><strong id="sellPct">50.0%</strong></div>
+        </div>
+        <div class="stats">
+          <div><span>Best bid</span><strong class="green" id="bestBid">—</strong></div>
+          <div><span>Best ask</span><strong class="red" id="bestAsk">—</strong></div>
+          <div><span>Bid volume</span><strong id="bidVolume">—</strong></div>
+          <div><span>Ask volume</span><strong id="askVolume">—</strong></div>
+        </div>
+        <div class="notice"><span>◆</span><p><b>Real-time feed</b><br>Prices and quantities come directly from the MEXC ZEC/USDT Spot order book.</p></div>
+      </aside>
+    </section>
+  </main>
+  <footer><span>© 2026 Lovely Legends</span><span>Market data provided by MEXC</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
